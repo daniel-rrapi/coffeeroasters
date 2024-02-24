@@ -2,9 +2,10 @@
 :root {
   --green: #0e8784;
   --light-green: #66d2cf;
+  --alternative-white: #fefcf7;
 }
 body {
-  background-color: #fefcf7;
+  background-color: var(--alternative-white);
   font-family: "Roboto", serif;
 }
 a {
