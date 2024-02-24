@@ -7,6 +7,8 @@ import { NavbarComponent } from './views/navbar/navbar.component';
 import { FooterComponent } from './views/footer/footer.component';
 import { LandingPageComponent } from './views/landing-page/landing-page.component';
 import { HeroComponent } from './components/hero/hero.component';
+import { OurCollectionComponent } from './components/our-collection/our-collection.component';
+import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { HeroComponent } from './components/hero/hero.component';
     NavbarComponent,
     FooterComponent,
     LandingPageComponent,
-    HeroComponent
+    HeroComponent,
+    OurCollectionComponent,
+    WhyChooseUsComponent
   ],
   imports: [
     BrowserModule,
