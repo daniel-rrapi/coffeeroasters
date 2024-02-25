@@ -9,6 +9,7 @@ import { LandingPageComponent } from './views/landing-page/landing-page.componen
 import { HeroComponent } from './components/hero/hero.component';
 import { OurCollectionComponent } from './components/our-collection/our-collection.component';
 import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.component';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { WhyChooseUsComponent } from './components/why-choose-us/why-choose-us.c
     LandingPageComponent,
     HeroComponent,
     OurCollectionComponent,
-    WhyChooseUsComponent
+    WhyChooseUsComponent,
+    HowItWorksComponent
   ],
   imports: [
     BrowserModule,
