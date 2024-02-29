@@ -1,0 +1,26 @@
+.banner {
+  background-color: #333d4b;
+  color: var(--alternative-white);
+}
+h1 {
+  font-weight: 700;
+  font-size: 2.5rem;
+}
+h2 {
+  color: #fcd6b9;
+  font-size: 4rem;
+  font-weight: 700;
+}
+h3 {
+  font-weight: 700;
+  font-size: 2.2rem;
+}
+.circle {
+  height: 40px;
+  width: 40px;
+  border: 2px solid var(--green);
+  border-radius: 50%;
+}
+section {
+  overflow-x: hidden;
+}
