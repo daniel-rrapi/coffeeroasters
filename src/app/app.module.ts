@@ -18,6 +18,7 @@ import { AboutUsHeadquartersComponent } from './components/about-us-headquarters
 import { CreatePlanComponent } from './views/create-plan/create-plan.component';
 import { CreatePlanBannerComponent } from './components/create-plan-banner/create-plan-banner.component';
 import { CreateChooseYourCoffeeComponent } from './components/create-choose-your-coffee/create-choose-your-coffee.component';
+import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CreateChooseYourCoffeeComponent } from './components/create-choose-your
     AboutUsHeadquartersComponent,
     CreatePlanComponent,
     CreatePlanBannerComponent,
-    CreateChooseYourCoffeeComponent
+    CreateChooseYourCoffeeComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
