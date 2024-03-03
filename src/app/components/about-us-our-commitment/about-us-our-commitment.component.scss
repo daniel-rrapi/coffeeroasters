@@ -1,0 +1,16 @@
+section {
+  margin-top: 8rem;
+}
+h2 {
+  font-weight: 700;
+}
+img {
+  width: 100%;
+}
+@media screen and (max-width: 768px) {
+  img {
+    width: auto;
+    height: 445px;
+    object-fit: contain;
+  }
+}

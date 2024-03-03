@@ -1,0 +1,40 @@
+.banner {
+  background-color: #333d4b;
+  color: var(--alternative-white);
+  height: 500px;
+  margin-bottom: 20vh;
+  margin-top: 20vh;
+}
+
+.container {
+  max-width: 56%;
+}
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+}
+h3 {
+  font-weight: 700;
+}
+p,
+h3 {
+  text-align: center;
+  color: var(--alternative-white);
+}
+.card {
+  background-color: var(--green);
+  height: 345px;
+}
+@media screen and (max-width: 850px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+  }
+  .banner {
+    background-color: #333d4b;
+    color: var(--alternative-white);
+    height: auto;
+    margin-bottom: 20vh;
+    margin-top: 20vh;
+  }
+}
