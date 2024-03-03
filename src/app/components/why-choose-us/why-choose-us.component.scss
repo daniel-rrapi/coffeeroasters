@@ -5,6 +5,7 @@
   margin-bottom: 20vh;
   margin-top: 20vh;
 }
+
 .container {
   max-width: 56%;
 }
@@ -23,4 +24,17 @@ h3 {
 .card {
   background-color: var(--green);
   height: 345px;
+}
+@media screen and (max-width: 850px) {
+  .container {
+    max-width: 100%;
+    margin: 0;
+  }
+  .banner {
+    background-color: #333d4b;
+    color: var(--alternative-white);
+    height: auto;
+    margin-bottom: 20vh;
+    margin-top: 20vh;
+  }
 }
