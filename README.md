@@ -1,6 +1,6 @@
 # Coffeeroasters
 
-Someone said coffe ☕? Coffeeroasters is a website where you can buy premium quality coffee and choose from different kind of it.
+Someone said coffe ☕? Coffeeroasters is a website where you can buy premium quality coffee and choose from different kind of it. <br>
 ![Alt text](src/assets/imgs/coffeeroaster_desktop_preview.png) <br>
  <a href="https://cofferoasters-danielrrapi.netlify.app">Live preview here</a> 
 
