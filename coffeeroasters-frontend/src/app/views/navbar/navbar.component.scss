@@ -1,3 +1,6 @@
+nav {
+  min-height: 56px;
+}
 a {
   font-size: 0.9rem;
   font-weight: 600;
@@ -9,4 +12,7 @@ a:hover {
 }
 p {
   margin: 0;
+}
+li {
+  cursor: pointer;
 }

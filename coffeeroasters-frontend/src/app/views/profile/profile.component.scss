@@ -1,0 +1,16 @@
+.container-fluid {
+  min-height: calc(100vh - 56px - 163px);
+}
+ul {
+  list-style-type: none;
+}
+.selected {
+  border-radius: 500px;
+  background-color: var(--light-green);
+}
+.selected a {
+  color: white;
+}
+li {
+  padding: 8px 16px;
+}

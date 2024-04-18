@@ -54,7 +54,7 @@ export class AuthService {
 
   restore() {
     const token = localStorage.getItem('token');
-    if (!this.authSubj.value) {
+    if (!this.authSubj.value && token) {
       this.getAndSetAuthenticatedUser().subscribe();
     }
     if (this.jwtHelper.isTokenExpired(token)) {

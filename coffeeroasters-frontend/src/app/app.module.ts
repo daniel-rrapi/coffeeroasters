@@ -24,6 +24,9 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileComponent } from './views/profile/profile.component';
+import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
+import { OrdersProfileComponent } from './components/orders-profile/orders-profile.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +49,9 @@ import { AuthInterceptor } from './auth/auth.interceptor';
     PageNotFoundComponent,
     LoginComponent,
     RegisterComponent,
+    ProfileComponent,
+    OverviewProfileComponent,
+    OrdersProfileComponent,
   ],
   imports: [
     BrowserModule,
