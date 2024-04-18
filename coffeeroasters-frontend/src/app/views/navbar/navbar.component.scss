@@ -1,6 +1,12 @@
 nav {
   min-height: 56px;
 }
+.active {
+  border-bottom: 2px solid var(--light-green);
+  a {
+    color: var(--light-green);
+  }
+}
 a {
   font-size: 0.9rem;
   font-weight: 600;
@@ -15,4 +21,12 @@ p {
 }
 li {
   cursor: pointer;
+}
+@media screen and (max-width: 991px) {
+  .active {
+    border-bottom: 2px solid transparent;
+    a {
+      color: var(--light-green);
+    }
+  }
 }
