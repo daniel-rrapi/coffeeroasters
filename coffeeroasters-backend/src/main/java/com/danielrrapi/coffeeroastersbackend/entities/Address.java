@@ -1,10 +1,7 @@
 package com.danielrrapi.coffeeroastersbackend.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
 import java.util.UUID;
 
@@ -18,6 +15,7 @@ public class Address {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Setter(AccessLevel.NONE)
     private UUID id;
 
     @Column(name = "full_name", nullable = false)
@@ -43,5 +41,8 @@ public class Address {
 
     @Column(name = "phone_number")
     private String phoneNumber;
-    
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 }
