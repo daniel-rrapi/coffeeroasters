@@ -1,5 +1,5 @@
 nav {
-  min-height: 56px;
+  min-height: var(--navbar-min-height);
 }
 .active {
   border-bottom: 2px solid var(--light-green);

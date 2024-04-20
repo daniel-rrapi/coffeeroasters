@@ -27,6 +27,10 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ProfileComponent } from './views/profile/profile.component';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 import { OrdersProfileComponent } from './components/orders-profile/orders-profile.component';
+import { CheckoutComponent } from './views/checkout/checkout.component';
+import { AddressCheckoutComponent } from './components/address-checkout/address-checkout.component';
+import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
+import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +56,10 @@ import { OrdersProfileComponent } from './components/orders-profile/orders-profi
     ProfileComponent,
     OverviewProfileComponent,
     OrdersProfileComponent,
+    CheckoutComponent,
+    AddressCheckoutComponent,
+    PaymentCheckoutComponent,
+    ConfirmCheckoutComponent,
   ],
   imports: [
     BrowserModule,

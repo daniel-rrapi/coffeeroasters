@@ -1,5 +1,7 @@
-.container-fluid {
-  min-height: calc(100vh - 56px - 163px);
+section {
+  padding-bottom: 10rem;
+  padding-top: 2rem;
+  min-height: calc(100vh - var(--navbar-min-height) - var(--footer-min-height));
 }
 ul {
   list-style-type: none;

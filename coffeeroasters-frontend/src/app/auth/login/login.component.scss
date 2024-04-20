@@ -1,5 +1,5 @@
 section {
-  height: 59vh;
+  min-height: calc(100vh - var(--navbar-min-height) - var(--footer-min-height));
 }
 button {
   color: white;

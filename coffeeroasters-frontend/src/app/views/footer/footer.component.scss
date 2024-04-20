@@ -5,8 +5,7 @@ footer {
   background-color: #333d4b;
   color: white;
   padding-block: 4rem;
-  margin-top: 10rem;
-  min-height: 163px;
+  min-height: var(--footer-min-height);
 }
 a {
   color: var(--alternative-white);
