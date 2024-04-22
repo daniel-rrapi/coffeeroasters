@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
+import { CoffeeOptionsService } from 'src/app/services/coffee-options.service';
 
 @Component({
   selector: 'app-create-choose-your-coffee',
@@ -6,106 +8,64 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-choose-your-coffee.component.scss'],
 })
 export class CreateChooseYourCoffeeComponent implements OnInit {
-  isCapsule: boolean = true;
-  isFilter: boolean = false;
-  isEspresso: boolean = false;
+  preferencies: string[] = [];
+  coffeeTypes: string[] = [];
+  quantities: string[] = [];
+  grindTypes: string[] = [];
+  shippingFrequencies: string[] = [];
 
-  isSingleOrigin: boolean = true;
-  isDecaf: boolean = false;
-  isBlended: boolean = false;
+  coffeeForm = new FormGroup({
+    preference: new FormControl(),
+    type: new FormControl(),
+    quantity: new FormControl(),
+    grindType: new FormControl(),
+    shippingFrequency: new FormControl(),
+  });
 
-  is250g: boolean = true;
-  is500g: boolean = false;
-  is1000g: boolean = false;
-
-  isWholeBean: boolean = true;
-  isFiltered: boolean = false;
-  isCafetiere: boolean = false;
-
-  isEvery1Week: boolean = true;
-  isEvery2Week: boolean = false;
-  isEveryMonth: boolean = false;
-
-  constructor() {}
-  selectCapsule() {
-    if (!this.isCapsule) this.isCapsule = true;
-    if (this.isFilter) this.isFilter = !this.isFilter;
-    if (this.isEspresso) this.isEspresso = !this.isEspresso;
-  }
-  selectFilter() {
-    if (!this.isFilter) this.isFilter = true;
-    if (this.isCapsule) this.isCapsule = !this.isCapsule;
-    if (this.isEspresso) this.isEspresso = !this.isEspresso;
-  }
-  selectEspresso() {
-    if (!this.isEspresso) this.isEspresso = true;
-    if (this.isCapsule) this.isCapsule = !this.isCapsule;
-    if (this.isFilter) this.isFilter = !this.isFilter;
-  }
-
-  selectSingleOrigin() {
-    if (!this.isSingleOrigin) this.isSingleOrigin = true;
-    if (this.isDecaf) this.isDecaf = !this.isDecaf;
-    if (this.isBlended) this.isBlended = !this.isBlended;
-  }
-  selectDecaf() {
-    if (!this.isDecaf) this.isDecaf = true;
-    if (this.isSingleOrigin) this.isSingleOrigin = !this.isSingleOrigin;
-    if (this.isBlended) this.isBlended = !this.isBlended;
-  }
-  selectBlended() {
-    if (!this.isBlended) this.isBlended = true;
-    if (this.isSingleOrigin) this.isSingleOrigin = !this.isSingleOrigin;
-    if (this.isDecaf) this.isDecaf = !this.isDecaf;
-  }
-
-  select250g() {
-    if (!this.is250g) this.is250g = true;
-    if (this.is500g) this.is500g = !this.is500g;
-    if (this.is1000g) this.is1000g = !this.is1000g;
-  }
-  select500g() {
-    if (!this.is500g) this.is500g = true;
-    if (this.is250g) this.is250g = !this.is250g;
-    if (this.is1000g) this.is1000g = !this.is1000g;
-  }
-  select1000g() {
-    if (!this.is1000g) this.is1000g = true;
-    if (this.is500g) this.is500g = !this.is500g;
-    if (this.is250g) this.is250g = !this.is250g;
-  }
-
-  selectWholeBean() {
-    if (!this.isWholeBean) this.isWholeBean = true;
-    if (this.isFiltered) this.isFiltered = !this.isFiltered;
-    if (this.isCafetiere) this.isCafetiere = !this.isCafetiere;
-  }
-  selectFiltered() {
-    if (!this.isFiltered) this.isFiltered = true;
-    if (this.isWholeBean) this.isWholeBean = !this.isWholeBean;
-    if (this.isCafetiere) this.isCafetiere = !this.isCafetiere;
-  }
-  selectCafetiere() {
-    if (!this.isCafetiere) this.isCafetiere = true;
-    if (this.isFiltered) this.isFiltered = !this.isFiltered;
-    if (this.isWholeBean) this.isWholeBean = !this.isWholeBean;
-  }
-
-  select1Week() {
-    if (!this.isEvery1Week) this.isEvery1Week = true;
-    if (this.isEvery2Week) this.isEvery2Week = !this.isEvery2Week;
-    if (this.isEveryMonth) this.isEveryMonth = !this.isEveryMonth;
-  }
-  select2Week() {
-    if (!this.isEvery2Week) this.isEvery2Week = true;
-    if (this.isEvery1Week) this.isEvery1Week = !this.isEvery1Week;
-    if (this.isEveryMonth) this.isEveryMonth = !this.isEveryMonth;
-  }
-  selectEveryMonth() {
-    if (!this.isEveryMonth) this.isEveryMonth = true;
-    if (this.isEvery1Week) this.isEvery1Week = !this.isEvery1Week;
-    if (this.isEvery2Week) this.isEvery2Week = !this.isEvery2Week;
+  constructor(private coffeeSrv: CoffeeOptionsService) {
+    coffeeSrv.getCoffeePreferencies().subscribe((res) => {
+      this.preferencies = res;
+      this.coffeeForm.value.preference = this.preferencies[0];
+    });
+    coffeeSrv.getCoffeeTypes().subscribe((res) => {
+      this.coffeeTypes = res;
+      this.coffeeForm.value.type = this.coffeeTypes[0];
+    });
+    coffeeSrv.getCoffeeQuantities().subscribe((res) => {
+      this.quantities = res;
+      this.coffeeForm.value.quantity = this.quantities[0];
+    });
+    coffeeSrv.getGrindTypes().subscribe((res) => {
+      this.grindTypes = res;
+      this.coffeeForm.value.grindType = this.grindTypes[0];
+    });
+    coffeeSrv.getShippingFrequency().subscribe((res) => {
+      this.shippingFrequencies = res;
+      this.coffeeForm.value.shippingFrequency = this.shippingFrequencies[0];
+    });
   }
 
   ngOnInit(): void {}
+
+  selectCoffeePreference(preference: string) {
+    this.coffeeForm.value.preference = preference;
+  }
+
+  selectCoffeeType(type: string) {
+    this.coffeeForm.value.type = type;
+  }
+
+  selectCoffeeQuantity(quantity: string) {
+    this.coffeeForm.value.quantity = quantity;
+  }
+
+  selectGrindType(grindType: string) {
+    this.coffeeForm.value.grindType = grindType;
+  }
+
+  selectShippingFrequency(shippingFrequency: string) {
+    this.coffeeForm.value.shippingFrequency = shippingFrequency;
+  }
+
+  onSubmit() {}
 }

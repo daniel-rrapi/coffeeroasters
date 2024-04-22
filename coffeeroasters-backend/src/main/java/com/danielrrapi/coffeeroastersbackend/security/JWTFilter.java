@@ -11,11 +11,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.List;
 
 @Component
 public class JWTFilter extends OncePerRequestFilter {
@@ -46,8 +49,9 @@ public class JWTFilter extends OncePerRequestFilter {
 
     }
 
+    private static List<String> skipFilterUrls = Arrays.asList("/auth/**", "/movies", "/movies/**", "/projections", "/projections/**", "/seats", "/seats/**");
     @Override
-    protected boolean shouldNotFilter(HttpServletRequest request) throws ServletException {
-        return new AntPathMatcher().match("/auth/**", request.getServletPath());
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        return skipFilterUrls.stream().anyMatch(url -> new AntPathRequestMatcher(url).matches(request));
     }
 }

@@ -12,6 +12,10 @@ public enum QuantityCoffee {
    }
 
    public String getValue() {
-       return value;
+       return value.replace("_", " ");
    }
+
+
+
+
 }

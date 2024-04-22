@@ -20,8 +20,13 @@ public class CoffeeController {
     }
 
     @GetMapping("/quantities")
-    public QuantityCoffee[] getCoffeeQuantities() {
-        return QuantityCoffee.values();
+    public String[] getCoffeeQuantities() {
+        QuantityCoffee[] quantities = QuantityCoffee.values();
+        String[] formattedQuantities = new String[quantities.length];
+        for (int i = 0; i < quantities.length; i++) {
+            formattedQuantities[i] = quantities[i].getValue();
+        }
+        return formattedQuantities;
     }
 
     @GetMapping("/grind")
