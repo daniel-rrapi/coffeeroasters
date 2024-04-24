@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": "Backend for Coffeeroasters made with Express.js",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "start": "nodemon ./src/index.js"
   },
   "author": "Daniel Rrapi",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.3.2"
