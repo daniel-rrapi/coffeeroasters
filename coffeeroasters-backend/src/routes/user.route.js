@@ -1,5 +1,10 @@
 import express from "express";
-import { registerUser, loginUser } from "../controllers/user.controller.js";
+import {
+  registerUser,
+  loginUser,
+  currentUser,
+} from "../controllers/user.controller.js";
+import validateToken from "../middlewares/validateToken.middleware.js";
 
 const router = express.Router();
 
@@ -7,6 +12,6 @@ router.post("/auth/register", registerUser);
 
 router.post("/auth/login", loginUser);
 
-router.post("/auth/me");
+router.get("/auth/me", validateToken, currentUser);
 
 export default router;

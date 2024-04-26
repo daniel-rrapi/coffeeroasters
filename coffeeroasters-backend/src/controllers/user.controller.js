@@ -61,4 +61,8 @@ const loginUser = async (req, res) => {
   }
 };
 
-export { registerUser, loginUser };
+const currentUser = (req, res) => {
+  res.status(200).json(req.decoded);
+};
+
+export { registerUser, loginUser, currentUser };
