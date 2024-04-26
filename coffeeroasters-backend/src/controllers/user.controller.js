@@ -18,6 +18,7 @@ const registerUser = async (req, res) => {
       lastName,
       email,
       password: hashedPassword,
+      role: "user",
     });
     if (user) {
       return res.status(201).json({ id: user.id, email: user.email });
@@ -43,6 +44,7 @@ const loginUser = async (req, res) => {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
+            role: user.role,
           },
         },
         process.env.JWT_SECRET,

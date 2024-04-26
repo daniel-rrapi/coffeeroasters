@@ -11,13 +11,14 @@ const getAllCoffees = async (req, res) => {
 
 const createCoffee = async (req, res) => {
   try {
-    const { name, description } = req.body;
-    if (!name || !description) {
+    const { name, title, options } = req.body;
+    if (!name || !title || !options) {
       return res.status(400).json({ message: "All fields are required!" });
     }
     const coffee = await Coffee.create({
       name,
-      description,
+      title,
+      options,
     });
     if (coffee) {
       return res.status(201).json(coffee);
