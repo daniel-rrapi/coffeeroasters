@@ -1,5 +1,15 @@
 import Address from "../models/address.model.js";
 
+const getAddresses = async (req, res) => {
+  try {
+    const userId = req.decoded.user._id;
+    const addresses = await Address.find({ user: userId });
+    return res.status(200).json({ addresses });
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
+
 const createNewAddress = async (req, res) => {
   try {
     const {
@@ -46,4 +56,4 @@ const createNewAddress = async (req, res) => {
   }
 };
 
-export default createNewAddress;
+export { getAddresses, createNewAddress };
