@@ -13,6 +13,6 @@ router.post("/auth/register", registerUser);
 
 router.post("/auth/login", loginUser);
 
-router.get("/auth/me", validateToken, validateAdmin, currentUser);
+router.get("/auth/me", validateToken, currentUser);
 
 export default router;

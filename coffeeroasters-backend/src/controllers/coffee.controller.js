@@ -2,7 +2,7 @@ import Coffee from "../models/coffee.model.js";
 
 const getAllCoffees = async (req, res) => {
   try {
-    const allCoffees = await Coffee.find({}).populate();
+    const allCoffees = await Coffee.find({}).populate("options");
     res.status(200).json(allCoffees);
   } catch (error) {
     return res.status(500).json({ message: error });
@@ -19,7 +19,7 @@ const createCoffee = async (req, res) => {
       name,
       title,
       options,
-    }).populate();
+    });
     if (coffee) {
       return res.status(201).json(coffee);
     } else {

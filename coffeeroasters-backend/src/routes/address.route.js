@@ -3,11 +3,14 @@ import validateToken from "../middlewares/validateToken.middleware.js";
 import {
   getAddresses,
   createNewAddress,
+  getAllPersonalAddresses,
 } from "../controllers/address.controller.js";
+import validateAdmin from "../middlewares/validateAdminRole.middleware.js";
 
 const router = express.Router();
 
-router.get("/addresses", validateToken, getAddresses);
+router.get("/addresses", validateToken, validateAdmin, getAddresses);
+router.get("/addresses/me", validateToken, getAllPersonalAddresses);
 router.post("/addresses", validateToken, createNewAddress);
 
 export default router;

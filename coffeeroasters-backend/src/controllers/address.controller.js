@@ -10,6 +10,24 @@ const getAddresses = async (req, res) => {
   }
 };
 
+const getAllPersonalAddresses = async (req, res) => {
+  try {
+    const userId = req.decoded.user._id;
+    const addresses = await Address.find({
+      user: userId,
+    }).populate();
+    if (addresses) {
+      return res.status(200).json(addresses);
+    } else {
+      return res.status(400).json({
+        message: "Please try again",
+      });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
+
 const createNewAddress = async (req, res) => {
   try {
     const {
@@ -56,4 +74,4 @@ const createNewAddress = async (req, res) => {
   }
 };
 
-export { getAddresses, createNewAddress };
+export { getAddresses, createNewAddress, getAllPersonalAddresses };

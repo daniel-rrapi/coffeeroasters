@@ -8,7 +8,6 @@ import validateToken from "../middlewares/validateToken.middleware.js";
 const router = express.Router();
 
 router.get("/coffees/options", getAllCoffeeOptions);
-
 router.post(
   "/coffees/options",
   validateToken,
