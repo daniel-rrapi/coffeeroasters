@@ -1,15 +1,6 @@
 import mongoose from "mongoose";
+import coffeeOptionSchema from "./coffeeOption.model.js";
 
-const coffeeOptionSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, "Please put a name"],
-  },
-  description: {
-    type: String,
-    required: [true, "Please put a description"],
-  },
-});
 const coffeeSchema = mongoose.Schema({
   name: {
     type: String,
@@ -19,7 +10,16 @@ const coffeeSchema = mongoose.Schema({
     type: String,
     required: [true, "Please put a title"],
   },
-  options: [coffeeOptionSchema],
+  options: {
+    type: [mongoose.SchemaTypes.ObjectId],
+    ref: "CoffeeOption",
+    required: true,
+    validate: [arrayLimit, "Path exceeds the limit of 3"],
+  },
 });
+
+function arrayLimit(val) {
+  return val.length <= 3;
+}
 
 export default mongoose.model("Coffee", coffeeSchema);

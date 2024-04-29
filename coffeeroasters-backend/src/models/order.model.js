@@ -12,8 +12,15 @@ const orderSchema = mongoose.Schema(
       required: true,
       ref: "Address",
     },
+    selectedOptions: {
+      type: [mongoose.SchemaTypes.ObjectId],
+      ref: "CoffeeOption",
+      required: true,
+    },
   },
   {
     timestamps: true,
   }
 );
+
+export default mongoose.model("Order", orderSchema);
