@@ -3,7 +3,13 @@ import orderModel from "../models/order.model.js";
 const getAllPersonalOrders = async (req, res) => {
   try {
     const userId = req.decoded.user._id;
-    const orders = await orderModel.find({ user: userId }).populate();
+    const orders = await orderModel
+      .find({ user: userId })
+      .populate([
+        { path: "selectedOptions" },
+        { path: "address" },
+        { path: "user", select: "-password" },
+      ]);
     if (orders) {
       return res.status(200).json(orders);
     } else {
@@ -34,13 +40,11 @@ const createOrder = async (req, res) => {
       return res.status(400).json({ message: "All fields are required!" });
     }
     const userId = req.decoded.user._id;
-    const newOrder = await orderModel
-      .create({
-        user: userId,
-        address,
-        selectedOptions,
-      })
-      .populate();
+    const newOrder = await orderModel.create({
+      user: userId,
+      address,
+      selectedOptions,
+    });
     if (newOrder) {
       return res.status(201).json(newOrder);
     } else {

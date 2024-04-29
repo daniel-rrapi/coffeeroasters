@@ -1,6 +1,7 @@
 import express from "express";
 import validateToken from "../middlewares/validateToken.middleware.js";
 import {
+  createOrder,
   getAllOrders,
   getAllPersonalOrders,
 } from "../controllers/order.controller.js";
@@ -10,6 +11,6 @@ const router = express.Router();
 
 router.get("/orders/me", validateToken, getAllPersonalOrders);
 router.get("/orders", validateToken, validateAdmin, getAllOrders);
-router.post("/orders", validateToken);
+router.post("/orders", validateToken, createOrder);
 
 export default router;
