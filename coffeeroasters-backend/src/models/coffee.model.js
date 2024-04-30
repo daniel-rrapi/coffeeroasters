@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import coffeeOptionSchema from "./coffeeOption.model.js";
 
 const coffeeSchema = mongoose.Schema({
   name: {

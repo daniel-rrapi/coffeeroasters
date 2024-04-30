@@ -26,7 +26,7 @@ export class AuthService {
 
   getAndSetAuthenticatedUser() {
     return this.http
-      .get<UserData>(`${this.apiUrl}/users/me`)
+      .get<UserData>(`${this.apiUrl}/auth/me`)
       .pipe(map((currentUser) => this.authSubj.next(currentUser)));
   }
 

@@ -1,8 +1,7 @@
 <div class="container d-flex flex-column align-items-center">
-  <h1>Hello {{ currentUser?.firstname }}</h1>
+  <h1>Hello {{ currentUser?.user?.firstName }}</h1>
   <h3>Personal Details</h3>
-  <p>First name: {{ currentUser?.firstname }}</p>
-  <p>Last name: {{ currentUser?.lastname }}</p>
-  <p>Email: {{ currentUser?.email }}</p>
-  <p>Date of birth: {{ currentUser?.dob }}</p>
+  <p>First name: {{ currentUser?.user?.firstName }}</p>
+  <p>Last name: {{ currentUser?.user?.lastName }}</p>
+  <p>Email: {{ currentUser?.user?.email }}</p>
 </div>

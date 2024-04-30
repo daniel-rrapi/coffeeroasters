@@ -32,95 +32,25 @@
     <!-- Right column -->
     <div class="col col-12 col-xl-8">
       <div class="row justify-content-center">
-        <h3 class="mb-5">How do you drink your coffee?</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-          <div
-            class="col"
-            *ngFor="let preference of preferencies; let index; as: index"
-          >
-            <div
-              class="card px-3 py-3 pb-5"
-              [ngClass]="{
-                'selected-card': coffeeForm.value.preference == preference
-              }"
-              (click)="selectCoffeePreference(preference)"
-            >
-              <h6 class="mb-3">{{ preference | titlecase }}</h6>
-              <!-- <p>Compatible with Nespresso systems and similar brewers</p> -->
-            </div>
-          </div>
-        </div>
-        <h3 class="mb-5">What type of coffee?</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-          <div class="col" *ngFor="let type of coffeeTypes">
-            <div
-              class="card px-3 py-3 pb-5"
-              [ngClass]="{ 'selected-card': type == coffeeForm.value.type }"
-              (click)="selectCoffeeType(type)"
-            >
-              <h6 class="mb-3">{{ type | titlecase }}</h6>
-              <!-- <p>
-                Distinct, high quality coffee from a specific family-owned farm
-              </p> -->
-            </div>
-          </div>
-        </div>
-
-        <h3 class="mb-5">How much would you like?</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-          <div class="col" *ngFor="let quantity of quantities">
-            <div
-              class="card px-3 py-3 pb-5"
-              [ngClass]="{
-                'selected-card': quantity == coffeeForm.value.quantity
-              }"
-              (click)="selectCoffeeQuantity(quantity)"
-            >
-              <h6 class="mb-3">{{ quantity | titlecase }}</h6>
-              <!-- <p>
-                Perfect for the solo drinker. Yields about 12 delicious cups
-              </p> -->
-            </div>
-          </div>
-        </div>
-
-        <h3 class="mb-5">Want us to grind them?</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-          <div class="col" *ngFor="let grind of grindTypes">
-            <div
-              class="card px-3 py-3 pb-5"
-              [ngClass]="{
-                'selected-card': grind == coffeeForm.value.grindType
-              }"
-              (click)="selectGrindType(grind)"
-            >
-              <h6 class="mb-3">{{ grind | titlecase }}</h6>
-              <!-- <p>Best choise if you cherish the full sensory experience</p> -->
-            </div>
-          </div>
-        </div>
-
-        <h3 class="mb-5">How often should we deliver?</h3>
-        <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-          <div
-            class="col"
-            *ngFor="let shippingFrequency of shippingFrequencies"
-          >
-            <div
-              class="card px-3 py-3 pb-5"
-              [ngClass]="{
-                'selected-card':
-                  shippingFrequency == coffeeForm.value.shippingFrequency
-              }"
-              (click)="selectShippingFrequency(shippingFrequency)"
-            >
-              <h6 class="mb-3">{{ shippingFrequency | titlecase }}</h6>
-              <!-- <p>$14.00 per shipment. Includes free first-class shipping.</p> -->
+        <div *ngFor="let coffee of coffees; index as i">
+          <h3 class="mb-5">{{ coffee.title }}</h3>
+          <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
+            <div class="col" *ngFor="let option of coffees[0].options">
+              <div
+                class="card px-3 py-3 pb-5"
+                [ngClass]="{
+                  'selected-card': true
+                }"
+                (click)="selectOption(option._id)"
+              >
+                <h6 class="mb-3">{{ option.name }}</h6>
+                {{ option.description }}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <a class="btn btn-primary" (click)="onSubmit()">Create your plan</a>
+      <a class="btn btn-primary">Create your plan</a>
     </div>
   </div>
 </section>

@@ -1,19 +1,13 @@
 export interface UserData {
-  id: string;
-  firstname: string;
-  lastname: string;
-  dob: Date;
-  email: string;
-  password: string;
-  role: string;
-  enabled: boolean;
-  authorities: Authority[];
-  username: string;
-  accountNonExpired: boolean;
-  accountNonLocked: boolean;
-  credentialsNonExpired: boolean;
+  user: User;
+  iat: number;
+  exp: number;
 }
 
-export interface Authority {
-  authority: string;
+export interface User {
+  _id: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  role: string;
 }
