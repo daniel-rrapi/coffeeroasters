@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Coffee } from 'src/app/interfaces/Coffee';
 import { CoffeeOptionsService } from 'src/app/services/coffee-options.service';
+import { OrderSharingService } from 'src/app/services/order-sharing.service';
 
 @Component({
   selector: 'app-create-choose-your-coffee',
@@ -13,7 +15,11 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
   selectedOptions: Object[] = [];
   areSelectedAll = false;
 
-  constructor(private coffeeSrv: CoffeeOptionsService) {
+  constructor(
+    private coffeeSrv: CoffeeOptionsService,
+    private router: Router,
+    private orderSharingSrv: OrderSharingService
+  ) {
     coffeeSrv.getCoffees().subscribe((res) => {
       this.coffees = res;
     });
@@ -42,5 +48,11 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
     return this.selectedOptions.some((item) =>
       Object.values(item).includes(value)
     );
+  }
+
+  onSubmit() {
+    console.log('pippo');
+    this.orderSharingSrv.currentOrderDetails = this.selectedOptions;
+    this.router.navigateByUrl('/checkout');
   }
 }
