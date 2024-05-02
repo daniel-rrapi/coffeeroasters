@@ -10,7 +10,8 @@ import { CoffeeOptionsService } from 'src/app/services/coffee-options.service';
 })
 export class CreateChooseYourCoffeeComponent implements OnInit {
   coffees!: Coffee[];
-  selectedOptions = { selectedOptions: [] };
+  selectedOptions: Object[] = [];
+  areSelectedAll = false;
 
   constructor(private coffeeSrv: CoffeeOptionsService) {
     coffeeSrv.getCoffees().subscribe((res) => {
@@ -20,5 +21,26 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectOption(id: string) {}
+  selectOption(coffee_id: string, option_id: string) {
+    let newObj = { [coffee_id]: option_id };
+    let found = false;
+    this.selectedOptions.forEach((item: any, index: any) => {
+      if (item[coffee_id] !== undefined) {
+        this.selectedOptions[index] = newObj;
+        found = true;
+      }
+    });
+    if (!found) {
+      this.selectedOptions.push(newObj);
+    }
+    if (this.coffees.length === this.selectedOptions.length) {
+      this.areSelectedAll = true;
+    }
+  }
+
+  existOptionId(value: any): boolean {
+    return this.selectedOptions.some((item) =>
+      Object.values(item).includes(value)
+    );
+  }
 }

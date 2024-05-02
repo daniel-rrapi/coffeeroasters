@@ -35,13 +35,13 @@
         <div *ngFor="let coffee of coffees; index as i">
           <h3 class="mb-5">{{ coffee.title }}</h3>
           <div class="row row-cols-1 row-cols-md-3 mb-8 gap-4 gap-md-0">
-            <div class="col" *ngFor="let option of coffees[0].options">
+            <div class="col" *ngFor="let option of coffees[i].options">
               <div
                 class="card px-3 py-3 pb-5"
                 [ngClass]="{
-                  'selected-card': true
+                  'selected-card': existOptionId(option._id)
                 }"
-                (click)="selectOption(option._id)"
+                (click)="selectOption(coffee._id, option._id)"
               >
                 <h6 class="mb-3">{{ option.name }}</h6>
                 {{ option.description }}
@@ -50,7 +50,9 @@
           </div>
         </div>
       </div>
-      <a class="btn btn-primary">Create your plan</a>
+      <button class="btn btn-primary" [disabled]="!areSelectedAll">
+        Create your plan
+      </button>
     </div>
   </div>
 </section>
