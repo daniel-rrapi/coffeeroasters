@@ -1,1 +1,11 @@
-<p>address-checkout works!</p>
+<div>
+  <h4 class="text-center">SHIPPING ADDRESS</h4>
+  <div class="row">
+    <div class="col d-flex align-items-center flex-column">
+      <p>{{ addresses[0].fullname }}</p>
+      <p>{{ addresses[0].address_line1 }}</p>
+      <p>{{ addresses[0].postal_code }} {{ addresses[0].city }}</p>
+      <p>{{ addresses[0].country }}</p>
+    </div>
+  </div>
+</div>

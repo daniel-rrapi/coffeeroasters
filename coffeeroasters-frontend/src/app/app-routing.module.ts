@@ -11,6 +11,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 import { OrdersProfileComponent } from './components/orders-profile/orders-profile.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
+import { AddressCheckoutComponent } from './components/address-checkout/address-checkout.component';
+import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
+import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
 
 const routes: Routes = [
   {
@@ -47,6 +50,12 @@ const routes: Routes = [
     path: 'checkout',
     component: CheckoutComponent,
     // canActivate: [AuthGuard],
+    children: [
+      { path: '', component: AddressCheckoutComponent },
+      { path: 'address', component: AddressCheckoutComponent },
+      { path: 'payment', component: PaymentCheckoutComponent },
+      { path: 'confirm', component: ConfirmCheckoutComponent },
+    ],
   },
   {
     path: '**',

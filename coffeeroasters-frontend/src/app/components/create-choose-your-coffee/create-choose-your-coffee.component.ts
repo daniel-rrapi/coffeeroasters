@@ -53,6 +53,6 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
   onSubmit() {
     console.log('pippo');
     this.orderSharingSrv.currentOrderDetails = this.selectedOptions;
-    this.router.navigateByUrl('/checkout');
+    this.router.navigateByUrl('/checkout/address');
   }
 }
