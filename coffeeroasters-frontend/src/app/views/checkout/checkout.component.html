@@ -1,9 +1,25 @@
 <section class="container">
   <ul class="bar">
     <li class="done">Login</li>
-    <li class="current">Address</li>
-    <li>Payment</li>
-    <li>Confirm</li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/address',
+        done:
+          currentUrl === '/checkout/payment' ||
+          currentUrl === '/checkout/confirm'
+      }"
+    >
+      Address
+    </li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/payment',
+        done: currentUrl === '/checkout/confirm'
+      }"
+    >
+      Payment
+    </li>
+    <li [ngClass]="{ current: currentUrl === '/checkout/confirm' }">Confirm</li>
     <li>Done!</li>
   </ul>
   <router-outlet></router-outlet>

@@ -1,11 +1,25 @@
 <div>
   <h4 class="text-center">SHIPPING ADDRESS</h4>
-  <div class="row">
-    <div class="col d-flex align-items-center flex-column">
-      <p>{{ addresses[0].fullname }}</p>
-      <p>{{ addresses[0].address_line1 }}</p>
-      <p>{{ addresses[0].postal_code }} {{ addresses[0].city }}</p>
-      <p>{{ addresses[0].country }}</p>
+
+  <form action="">
+    <div *ngFor="let address of addresses; first as first">
+      <input
+        type="radio"
+        name="address"
+        value="{{ address._id }}"
+        (change)="selectedAddressId = address._id"
+      />
+      <label for=""
+        >{{ address.fullname }}, {{ address.address_line1 }}
+        {{ address.address_line2 }}, {{ address.city }}
+      </label>
     </div>
-  </div>
+    <button
+      class="btn btn-primary"
+      (click)="onContinue()"
+      [disabled]="!selectedAddressId"
+    >
+      Continue
+    </button>
+  </form>
 </div>

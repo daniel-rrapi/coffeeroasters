@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Address } from 'src/app/interfaces/Address';
 import { AddressService } from 'src/app/services/address.service';
+import { OrderSharingService } from 'src/app/services/order-sharing.service';
 
 @Component({
   selector: 'app-address-checkout',
@@ -9,11 +11,25 @@ import { AddressService } from 'src/app/services/address.service';
 })
 export class AddressCheckoutComponent implements OnInit {
   addresses!: Address[];
-  constructor(private addressSrv: AddressService) {
+  selectedAddressId: string | undefined;
+  constructor(
+    private addressSrv: AddressService,
+    private orderSharingSrv: OrderSharingService,
+    private router: Router
+  ) {
     addressSrv.getCurrentUserAddresses().subscribe((res) => {
       this.addresses = res;
     });
   }
 
   ngOnInit(): void {}
+
+  onContinue() {
+    if (this.selectedAddressId) {
+      this.orderSharingSrv.currentAddressId = this.selectedAddressId;
+      this.router.navigate(['/checkout/payment']);
+    } else {
+      alert('Please select an address');
+    }
+  }
 }
