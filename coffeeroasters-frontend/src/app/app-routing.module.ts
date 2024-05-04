@@ -14,6 +14,7 @@ import { CheckoutComponent } from './views/checkout/checkout.component';
 import { AddressCheckoutComponent } from './components/address-checkout/address-checkout.component';
 import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
 import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
+import { OrderGuard } from './guards/order.guard';
 
 const routes: Routes = [
   {
@@ -49,7 +50,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    // canActivate: [AuthGuard],
+    canActivate: [AuthGuard, OrderGuard],
     children: [
       { path: '', component: AddressCheckoutComponent },
       { path: 'address', component: AddressCheckoutComponent },
@@ -64,7 +65,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

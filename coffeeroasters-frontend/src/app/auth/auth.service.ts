@@ -58,8 +58,16 @@ export class AuthService {
       this.getAndSetAuthenticatedUser().subscribe();
     }
     if (this.jwtHelper.isTokenExpired(token)) {
-      this.router.createUrlTree(['/login']);
+      this.router.navigate(['/login']);
       return;
+    }
+  }
+
+  isAuthenticated() {
+    if (this.authSubj.value) {
+      return true;
+    } else {
+      return false;
     }
   }
 

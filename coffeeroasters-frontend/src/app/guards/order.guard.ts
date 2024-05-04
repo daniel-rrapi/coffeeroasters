@@ -6,15 +6,17 @@ import {
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
-import { Observable, retry } from 'rxjs';
-import { AuthService } from './auth.service';
-import { UserData } from '../interfaces/UserData';
+import { Observable } from 'rxjs';
+import { OrderSharingService } from '../services/order-sharing.service';
 
 @Injectable({
   providedIn: 'root',
 })
-export class AuthGuard implements CanActivate {
-  constructor(private authSrv: AuthService, private router: Router) {}
+export class OrderGuard implements CanActivate {
+  constructor(
+    private orderSharingSrv: OrderSharingService,
+    private router: Router
+  ) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -23,10 +25,10 @@ export class AuthGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    if (this.authSrv.isAuthenticated()) {
+    if (this.orderSharingSrv.currentOrderDetails.length > 0) {
       return true;
     } else {
-      this.router.navigate(['/login']);
+      alert('No order');
       return false;
     }
   }
