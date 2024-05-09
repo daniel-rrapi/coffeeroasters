@@ -41,7 +41,9 @@
                 [ngClass]="{
                   'selected-card': existOptionId(option._id)
                 }"
-                (click)="selectOption(coffee._id, option._id)"
+                (click)="
+                  selectOption(coffee._id, option._id, coffee.name, option.name)
+                "
               >
                 <h6 class="mb-3">{{ option.name }}</h6>
                 {{ option.description }}

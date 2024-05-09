@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Coffee } from 'src/app/interfaces/Coffee';
+import { SelectedOption } from 'src/app/interfaces/SelectedOption';
 import { CoffeeOptionsService } from 'src/app/services/coffee-options.service';
 import { OrderSharingService } from 'src/app/services/order-sharing.service';
 
@@ -12,7 +13,7 @@ import { OrderSharingService } from 'src/app/services/order-sharing.service';
 })
 export class CreateChooseYourCoffeeComponent implements OnInit {
   coffees!: Coffee[];
-  selectedOptions: Object[] = [];
+  selectedOptions: SelectedOption[] = [];
   areSelectedAll = false;
 
   constructor(
@@ -27,11 +28,16 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  selectOption(coffee_id: string, option_id: string) {
-    let newObj = { [coffee_id]: option_id };
+  selectOption(
+    coffeeId: string,
+    optionId: string,
+    coffeeName: string,
+    optionName: string
+  ) {
+    let newObj: SelectedOption = { coffeeId, optionId, coffeeName, optionName };
     let found = false;
     this.selectedOptions.forEach((item: any, index: any) => {
-      if (item[coffee_id] !== undefined) {
+      if (item[coffeeId] !== undefined) {
         this.selectedOptions[index] = newObj;
         found = true;
       }
@@ -51,7 +57,6 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('pippo');
     this.orderSharingSrv.currentOrderDetails = this.selectedOptions;
     this.router.navigateByUrl('/checkout/address');
   }

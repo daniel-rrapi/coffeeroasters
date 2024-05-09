@@ -7,7 +7,7 @@
         type="radio"
         name="address"
         value="{{ address._id }}"
-        (change)="selectedAddressId = address._id"
+        (change)="selectedAddressId = address._id; selectedAddressObj = address"
       />
       <label for=""
         >{{ address.fullname }}, {{ address.address_line1 }}

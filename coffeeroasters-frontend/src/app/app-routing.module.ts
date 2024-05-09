@@ -50,7 +50,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    canActivate: [AuthGuard, OrderGuard],
+    // canActivate: [AuthGuard, OrderGuard],
     children: [
       { path: '', component: AddressCheckoutComponent },
       { path: 'address', component: AddressCheckoutComponent },
@@ -65,7 +65,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, { useHash: true })],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

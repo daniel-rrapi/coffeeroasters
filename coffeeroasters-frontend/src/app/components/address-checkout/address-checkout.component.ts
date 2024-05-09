@@ -12,6 +12,7 @@ import { OrderSharingService } from 'src/app/services/order-sharing.service';
 export class AddressCheckoutComponent implements OnInit {
   addresses!: Address[];
   selectedAddressId: string | undefined;
+  selectedAddressObj: Address | undefined;
   constructor(
     private addressSrv: AddressService,
     private orderSharingSrv: OrderSharingService,
@@ -25,8 +26,9 @@ export class AddressCheckoutComponent implements OnInit {
   ngOnInit(): void {}
 
   onContinue() {
-    if (this.selectedAddressId) {
+    if (this.selectedAddressId && this.selectedAddressObj) {
       this.orderSharingSrv.currentAddressId = this.selectedAddressId;
+      this.orderSharingSrv.currentAddressObj = this.selectedAddressObj;
       this.router.navigate(['/checkout/payment']);
     } else {
       alert('Please select an address');
