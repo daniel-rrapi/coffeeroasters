@@ -31,6 +31,7 @@ import { CheckoutComponent } from './views/checkout/checkout.component';
 import { AddressCheckoutComponent } from './components/address-checkout/address-checkout.component';
 import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
 import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
+import { DoneCheckoutComponent } from './components/done-checkout/done-checkout.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-
     AddressCheckoutComponent,
     PaymentCheckoutComponent,
     ConfirmCheckoutComponent,
+    DoneCheckoutComponent,
   ],
   imports: [
     BrowserModule,
