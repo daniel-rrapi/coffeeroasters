@@ -12,11 +12,20 @@ const orderSchema = mongoose.Schema(
       required: true,
       ref: "Address",
     },
-    selectedOptions: {
-      type: [mongoose.SchemaTypes.ObjectId],
-      ref: "CoffeeOption",
-      required: true,
-    },
+    coffeeSelections: [
+      {
+        coffeeField: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: "Coffee",
+          required: true,
+        },
+        selectedOption: {
+          type: mongoose.SchemaTypes.ObjectId,
+          ref: "CoffeeOption",
+          required: true,
+        },
+      },
+    ],
   },
   {
     timestamps: true,

@@ -10,6 +10,31 @@ const getAddresses = async (req, res) => {
   }
 };
 
+const getAddressById = async (req, res) => {
+  try {
+    const id = req.params.id;
+    if (!id) {
+      return res.status(400).json({ message: "Please insert the id" });
+    }
+    const userId = req.decoded.user._id;
+    const address = await Address.findById(id);
+    if (
+      address &&
+      (address.user.toString() === userId || req.decoded.user.role === "admin")
+    ) {
+      return res.status(200).json(address);
+    } else if (!address && req.decoded.user.role !== "admin") {
+      return res
+        .status(400)
+        .json({ message: "Address not found for the current user" });
+    } else {
+      return res.status(400).json({ message: "Address not found" });
+    }
+  } catch (error) {
+    return res.status(500).json({ message: error });
+  }
+};
+
 const getAllPersonalAddresses = async (req, res) => {
   try {
     const userId = req.decoded.user._id;
@@ -74,4 +99,9 @@ const createNewAddress = async (req, res) => {
   }
 };
 
-export { getAddresses, createNewAddress, getAllPersonalAddresses };
+export {
+  getAddresses,
+  getAddressById,
+  createNewAddress,
+  getAllPersonalAddresses,
+};
