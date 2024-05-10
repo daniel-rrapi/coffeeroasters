@@ -1,6 +1,6 @@
 export interface SelectedOption {
-  coffeeId: string;
-  optionId: string;
+  coffeeField: string;
+  selectedOption: string;
   coffeeName: string;
   optionName: string;
 }

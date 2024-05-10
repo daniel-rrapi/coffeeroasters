@@ -15,6 +15,7 @@ import { AddressCheckoutComponent } from './components/address-checkout/address-
 import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
 import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
 import { OrderGuard } from './guards/order.guard';
+import { DoneCheckoutComponent } from './components/done-checkout/done-checkout.component';
 
 const routes: Routes = [
   {
@@ -56,6 +57,7 @@ const routes: Routes = [
       { path: 'address', component: AddressCheckoutComponent },
       { path: 'payment', component: PaymentCheckoutComponent },
       { path: 'confirm', component: ConfirmCheckoutComponent },
+      { path: 'done', component: DoneCheckoutComponent },
     ],
   },
   {

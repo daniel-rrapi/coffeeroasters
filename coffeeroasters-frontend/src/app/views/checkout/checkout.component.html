@@ -6,7 +6,8 @@
         current: currentUrl === '/checkout/address',
         done:
           currentUrl === '/checkout/payment' ||
-          currentUrl === '/checkout/confirm'
+          currentUrl === '/checkout/confirm' ||
+          currentUrl === '/checkout/done'
       }"
     >
       Address
@@ -14,13 +15,21 @@
     <li
       [ngClass]="{
         current: currentUrl === '/checkout/payment',
-        done: currentUrl === '/checkout/confirm'
+        done:
+          currentUrl === '/checkout/confirm' || currentUrl === '/checkout/done'
       }"
     >
       Payment
     </li>
-    <li [ngClass]="{ current: currentUrl === '/checkout/confirm' }">Confirm</li>
-    <li>Done!</li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/confirm',
+        done: currentUrl === '/checkout/done'
+      }"
+    >
+      Confirm
+    </li>
+    <li [ngClass]="{ current: currentUrl === '/checkout/done' }">Done!</li>
   </ul>
   <router-outlet></router-outlet>
 </section>

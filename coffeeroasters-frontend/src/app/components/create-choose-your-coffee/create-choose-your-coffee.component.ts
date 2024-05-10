@@ -29,15 +29,20 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
   ngOnInit(): void {}
 
   selectOption(
-    coffeeId: string,
-    optionId: string,
+    coffeeField: string,
+    selectedOption: string,
     coffeeName: string,
     optionName: string
   ) {
-    let newObj: SelectedOption = { coffeeId, optionId, coffeeName, optionName };
+    let newObj: SelectedOption = {
+      coffeeField,
+      selectedOption,
+      coffeeName,
+      optionName,
+    };
     let found = false;
     this.selectedOptions.forEach((item: any, index: any) => {
-      if (item[coffeeId] !== undefined) {
+      if (item[coffeeField] !== undefined) {
         this.selectedOptions[index] = newObj;
         found = true;
       }
