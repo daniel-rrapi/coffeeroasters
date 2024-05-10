@@ -35,15 +35,15 @@ const getAllOrders = async (req, res) => {
 
 const createOrder = async (req, res) => {
   try {
-    const { address, selectedOptions } = req.body;
-    if (!address || !selectedOptions) {
+    const { address, coffeeSelections } = req.body;
+    if (!address || !coffeeSelections) {
       return res.status(400).json({ message: "All fields are required!" });
     }
     const userId = req.decoded.user._id;
     const newOrder = await orderModel.create({
       user: userId,
       address,
-      selectedOptions,
+      coffeeSelections,
     });
     if (newOrder) {
       return res.status(201).json(newOrder);
