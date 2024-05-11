@@ -6,7 +6,8 @@ const getAllPersonalOrders = async (req, res) => {
     const orders = await orderModel
       .find({ user: userId })
       .populate([
-        { path: "selectedOptions" },
+        { path: "coffeeSelections.coffeeField" },
+        { path: "coffeeSelections.selectedOption" },
         { path: "address" },
         { path: "user", select: "-password" },
       ]);
