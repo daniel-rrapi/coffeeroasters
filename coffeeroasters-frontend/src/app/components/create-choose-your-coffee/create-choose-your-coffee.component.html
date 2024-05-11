@@ -31,12 +31,12 @@
     </div>
     <!-- Right column -->
     <div class="col col-12 col-xl-8">
-      <div class="d-flex justify-content-center" *ngIf="!areDataFetched">
+      <div class="d-flex justify-content-center" *ngIf="!isResponseOk">
         <div class="spinner-border text-primary" role="status">
           <span class="visually-hidden">Loading...</span>
         </div>
       </div>
-      <div *ngIf="areDataFetched">
+      <div *ngIf="isResponseOk">
         <div class="row justify-content-center">
           <div *ngFor="let coffee of coffees; index as i">
             <h3 class="mb-5">{{ coffee.title }}</h3>

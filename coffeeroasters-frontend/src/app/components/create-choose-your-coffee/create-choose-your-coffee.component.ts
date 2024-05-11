@@ -13,7 +13,7 @@ import { OrderSharingService } from 'src/app/services/order-sharing.service';
 })
 export class CreateChooseYourCoffeeComponent implements OnInit {
   coffees!: Coffee[];
-  areDataFetched = false;
+  isResponseOk = false;
   selectedOptions: SelectedOption[] = [];
   areSelectedAll = false;
 
@@ -24,7 +24,7 @@ export class CreateChooseYourCoffeeComponent implements OnInit {
   ) {
     coffeeSrv.getCoffees().subscribe((res) => {
       this.coffees = res;
-      this.areDataFetched = true;
+      this.isResponseOk = true;
     });
   }
 

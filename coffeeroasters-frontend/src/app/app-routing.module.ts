@@ -7,7 +7,7 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProfileComponent } from './views/profile/profile.component';
-import { AuthGuard } from './auth/auth.guard';
+import { authGuard } from './auth/auth.guard';
 import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
 import { OrdersProfileComponent } from './components/orders-profile/orders-profile.component';
 import { CheckoutComponent } from './views/checkout/checkout.component';
@@ -41,7 +41,7 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [AuthGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', component: OverviewProfileComponent },
       { path: 'overview', component: OverviewProfileComponent },
@@ -51,7 +51,7 @@ const routes: Routes = [
   {
     path: 'checkout',
     component: CheckoutComponent,
-    // canActivate: [AuthGuard, OrderGuard],
+    canActivate: [authGuard],
     children: [
       { path: '', component: AddressCheckoutComponent },
       { path: 'address', component: AddressCheckoutComponent },
