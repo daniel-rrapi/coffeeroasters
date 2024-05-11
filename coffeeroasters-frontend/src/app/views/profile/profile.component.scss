@@ -1,0 +1,18 @@
+section {
+  padding-bottom: 10rem;
+  padding-top: 2rem;
+  min-height: calc(100vh - var(--navbar-min-height) - var(--footer-min-height));
+}
+ul {
+  list-style-type: none;
+}
+.selected {
+  border-radius: 500px;
+  background-color: var(--light-green);
+}
+.selected a {
+  color: white;
+}
+li {
+  padding: 8px 16px;
+}

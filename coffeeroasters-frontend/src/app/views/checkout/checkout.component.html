@@ -1,0 +1,35 @@
+<section class="container">
+  <ul class="bar">
+    <li class="done">Login</li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/address',
+        done:
+          currentUrl === '/checkout/payment' ||
+          currentUrl === '/checkout/confirm' ||
+          currentUrl === '/checkout/done'
+      }"
+    >
+      Address
+    </li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/payment',
+        done:
+          currentUrl === '/checkout/confirm' || currentUrl === '/checkout/done'
+      }"
+    >
+      Payment
+    </li>
+    <li
+      [ngClass]="{
+        current: currentUrl === '/checkout/confirm',
+        done: currentUrl === '/checkout/done'
+      }"
+    >
+      Confirm
+    </li>
+    <li [ngClass]="{ current: currentUrl === '/checkout/done' }">Done!</li>
+  </ul>
+  <router-outlet></router-outlet>
+</section>

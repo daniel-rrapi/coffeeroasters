@@ -1,0 +1,13 @@
+<h1>Your Orders</h1>
+<ul>
+  <li *ngFor="let order of allOrders">
+    <span class="fw-bold">Address details: </span>{{ order.address.fullname }},
+    {{ order.address.address_line1 }}, {{ order.address.city }}
+    <ul>
+      <span class="fw-bold">Coffee options: </span>
+      <li *ngFor="let coffee of order.coffeeSelections">
+        {{ coffee.coffeeField.name }}: {{ coffee.selectedOption.name }}
+      </li>
+    </ul>
+  </li>
+</ul>

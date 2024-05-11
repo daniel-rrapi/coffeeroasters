@@ -1,0 +1,25 @@
+<h3 class="text-center">Order details</h3>
+<ul class="h5">
+  Coffee options:
+  <li *ngFor="let detail of currentOrderDetails">
+    {{ detail.coffeeName }}: {{ detail.optionName }}
+  </li>
+  <p class="h5">Payment:</p>
+  <p>{{ currentPaymentMethod }}</p>
+  <p class="h5">Address:</p>
+  <p>
+    {{ currentAddressObj?.fullname }}, {{ currentAddressObj?.address_line1 }}
+    {{ currentAddressObj?.address_line2 }}, {{ currentAddressObj?.city }}
+  </p>
+  <button
+    class="btn btn-primary"
+    [disabled]="
+      currentOrderDetails.length === 0 ||
+      !currentAddressObj ||
+      !currentPaymentMethod
+    "
+    (click)="onSubmit()"
+  >
+    Confirm Order
+  </button>
+</ul>

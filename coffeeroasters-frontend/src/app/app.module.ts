@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +21,17 @@ import { CreatePlanComponent } from './views/create-plan/create-plan.component';
 import { CreatePlanBannerComponent } from './components/create-plan-banner/create-plan-banner.component';
 import { CreateChooseYourCoffeeComponent } from './components/create-choose-your-coffee/create-choose-your-coffee.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
+import { LoginComponent } from './auth/login/login.component';
+import { RegisterComponent } from './auth/register/register.component';
+import { AuthInterceptor } from './auth/auth.interceptor';
+import { ProfileComponent } from './views/profile/profile.component';
+import { OverviewProfileComponent } from './components/overview-profile/overview-profile.component';
+import { OrdersProfileComponent } from './components/orders-profile/orders-profile.component';
+import { CheckoutComponent } from './views/checkout/checkout.component';
+import { AddressCheckoutComponent } from './components/address-checkout/address-checkout.component';
+import { PaymentCheckoutComponent } from './components/payment-checkout/payment-checkout.component';
+import { ConfirmCheckoutComponent } from './components/confirm-checkout/confirm-checkout.component';
+import { DoneCheckoutComponent } from './components/done-checkout/done-checkout.component';
 
 @NgModule({
   declarations: [
@@ -38,13 +51,32 @@ import { PageNotFoundComponent } from './views/page-not-found/page-not-found.com
     CreatePlanComponent,
     CreatePlanBannerComponent,
     CreateChooseYourCoffeeComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    LoginComponent,
+    RegisterComponent,
+    ProfileComponent,
+    OverviewProfileComponent,
+    OrdersProfileComponent,
+    CheckoutComponent,
+    AddressCheckoutComponent,
+    PaymentCheckoutComponent,
+    ConfirmCheckoutComponent,
+    DoneCheckoutComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
