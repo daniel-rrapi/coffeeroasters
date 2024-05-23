@@ -21,5 +21,5 @@ app.use("/", orderRouter);
 dbConnection();
 
 app.listen(10000, () => {
-  console.log("Server running on 3000 port");
+  console.log("Server running on 10000 port");
 });
